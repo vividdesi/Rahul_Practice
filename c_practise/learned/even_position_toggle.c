@@ -3,15 +3,17 @@ int bit_position_size(int);
 int dec_binary_conversion(int);
 int main()
 {
-	int number=0,even=0;
+  int number=0,even=0;
 	printf("Enter the number u want toggle even positions\n");
 	scanf("%d",&number);
 	int binary=dec_binary_conversion(number);
 	int size=bit_position_size(binary);
-	for(int i=0;i<=size;i++)if(i%2==0)even|=(1<<i);
+	for(int i=0;i<size;i++)if(i%2==0)even|=(1<<i);
 	//int even_binary=dec_binary_conversion(even);
 	printf("Before the value %d\n",binary);
 	number^=even;
+	printf("The number result is %d\n",number);
+	printf("The even result is %d\n",even);
 	binary=dec_binary_conversion(number);
 	printf("Before the value %d\n",binary);
 	return 0;
@@ -21,8 +23,8 @@ int bit_position_size(int n)
 	int count=0;
 	while(n>0)
 	{
-		n/=10;
 		count++;
+		n/=10;
 	}
 	return count;
 }
