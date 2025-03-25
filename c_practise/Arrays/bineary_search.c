@@ -12,21 +12,22 @@ int main(void)
         printf("Enter the number u want to search\n");
         scanf("%d",&item);
         int i=binary_search(arr,n,item);
-        if(i>=0)printf("The number is present at index arr[%d] is %d\n",i,arr[i]);
+	printf("The i value is %d\n",i);
+        if(i>=0)printf("The number is present\n");
         else printf("The  number is not present  there\n");
         return 0;
 }
 
 int binary_search(int a[],int size,int item)
 {
-	int mid=size/2,i;
-	if(item<=a[mid])
+	int mid,left=0,right=size-1;
+	while(left <= right)
 	{
-		i=0,size=mid;
+	mid=left+(right -left)/2;
+	if(a[mid]==item)return a[mid];
+	else if(a[mid]<item)left=mid +1;
+	else right=mid -1;
 	}
-	else i=mid;
-	printf("The i value is %d and size value is %d\n",i,size);
-	for(i;i<=size;i++)if(item == a[i])return i;
 	return -1;
 }
 
