@@ -1,0 +1,50 @@
+BEGIN
+
+  FUNCTION print(p, n)
+    FOR i FROM 0 TO n-1 DO
+      PRINT value at (p + i)
+    END FOR
+    PRINT newline
+  END FUNCTION
+
+  FUNCTION insert_array(p, n)
+    FOR i FROM 0 TO n-1 DO
+      READ value at (p + i)
+    END FOR
+  END FUNCTION
+
+  FUNCTION insertion_sort(p, n)
+    FOR i FROM 1 TO n-1 DO
+      SET temp TO value at (p + i)
+      SET j TO address of (p + i - 1)
+
+      WHILE j >= p AND value at j > temp DO
+        SET value at (j + 1) TO value at j
+        DECREMENT j
+      END WHILE
+
+      SET value at (j + 1) TO temp
+    END FOR
+  END FUNCTION
+
+  FUNCTION main()
+    PRINT "Enter the size of array"
+    READ size
+
+    DECLARE array a of size 'size'
+
+    CALL insert_array(a, size)
+
+    PRINT "Before sorting the array"
+    CALL print(a, size)
+
+    CALL insertion_sort(a, size)
+
+    PRINT "After sorting the array"
+    CALL print(a, size)
+
+    RETURN 0
+  END FUNCTION
+
+END
+

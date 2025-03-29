@@ -1,0 +1,57 @@
+BEGIN
+
+  FUNCTION input_array(a, n)
+    FOR i FROM 0 TO n-1 DO
+      READ a[i]
+    END FOR
+  END FUNCTION
+
+  FUNCTION print_array(a, n)
+    FOR i FROM 0 TO n-1 DO
+      PRINT a[i]
+    END FOR
+    PRINT newline
+  END FUNCTION
+
+  FUNCTION selection_sort(a, n)
+    FOR i FROM 0 TO n-2 DO
+      SET min TO i
+      FOR j FROM i+1 TO n-1 DO
+        IF a[j] < a[min] THEN
+          SET min TO j
+        END IF
+      END FOR
+
+      IF min ≠ i THEN
+        SWAP a[i] WITH a[min]
+      END IF
+    END FOR
+  END FUNCTION
+
+  FUNCTION main()
+    PRINT "Enter the size of array"
+    READ n
+
+    IF n ≤ 0 THEN
+      PRINT "Invalid array size"
+      RETURN 1
+    END IF
+
+    DECLARE array a of size n
+
+    PRINT "Enter the values"
+    CALL input_array(a, n)
+
+    PRINT "Before sorting:"
+    CALL print_array(a, n)
+
+    CALL selection_sort(a, n)
+
+    PRINT "After sorting:"
+    CALL print_array(a, n)
+
+    RETURN 0
+  END FUNCTION
+
+END
+

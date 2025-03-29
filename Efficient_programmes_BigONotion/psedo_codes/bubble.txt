@@ -1,0 +1,49 @@
+Procedure print_array(arr, n)
+    For i from 0 to n-1 do:
+        Print arr[i]
+    End For
+    Print new line
+End Procedure
+
+Procedure input_array(arr, n)
+    For i from 0 to n-1 do:
+        Read arr[i]
+    End For
+End Procedure
+
+Procedure bubble_sort(arr, n)
+    last_swap ← n - 1
+    Repeat until no swaps are needed:
+        flag ← 0
+        new_last_swap ← 0
+        For j from 0 to last_swap - 1 do:
+            If arr[j] > arr[j+1] then:
+                Swap arr[j] and arr[j+1]
+                flag ← 1
+                new_last_swap ← j
+            End If
+        End For
+        If flag = 0 then:
+            Break
+        last_swap ← new_last_swap
+    End Repeat
+End Procedure
+
+Procedure main()
+    Declare size
+    Print "Enter the size of array"
+    Read size
+    Declare arr[size]
+    
+    Print "Enter the values in the array"
+    Call input_array(arr, size)
+
+    Print "Before sorting, the values are"
+    Call print_array(arr, size)
+
+    Call bubble_sort(arr, size)
+
+    Print "After sorting, the values are"
+    Call print_array(arr, size)
+End Procedure
+
