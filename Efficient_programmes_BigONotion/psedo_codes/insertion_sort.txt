@@ -18,7 +18,7 @@ BEGIN
       SET temp TO value at (p + i)
       SET j TO address of (p + i - 1)
 
-      WHILE j >= p AND value at j > temp DO
+      WHILE j >= 0 AND value at j > temp DO
         SET value at (j + 1) TO value at j
         DECREMENT j
       END WHILE
