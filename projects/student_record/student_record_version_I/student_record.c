@@ -16,14 +16,15 @@ typedef struct student
 void insert_data(student *s,int initial_value,int end_value,int mode);
 void display_students(const student *s,int size);
 void search_student( student *s,int roll_no,int size,int mode);
+void average_marks(const student *s,int size);
 int main(void) {
-
+short int option,size=0,roll_no;
 printf("-----------------------------------------\n");
 printf("    STUDENT RECORD MANAGEMENT SYSTEM\n");
 printf("-----------------------------------------\n");
 while(1)
 {
-    short int option,size=0,roll_no;
+    
     printf("1.Create a student record\n");
     printf("2.Add new student\n");//Realloc
     printf("3.Display all student records\n");
@@ -106,7 +107,7 @@ while(1)
 		if(temp != NULL)
 		{
 			p=temp;
-			insert_data(p,size,new_size,1);
+			insert_data(p,size,(size+new_size),1);
 			size+=new_size;
 		}
 
@@ -118,7 +119,7 @@ while(1)
 		break;
 
 
-        case 3:display_students(p,size); break;
+        case 3:printf("The size %d\n",size);display_students(p,size); break;
 
         case 4:printf("Enter the roll number\n");
 	       while(scanf("%hd",&roll_no) != 1 || (roll_no <=0 && roll_no>=1000))
@@ -128,7 +129,7 @@ while(1)
                      while(getchar()!='\n');
                   }
                   getchar();
-		  search_student(p,roll_no,size,2);
+		  search_student(p,roll_no,size,1);
 		  break; 
 
         case 5:printf("Enter the roll number u want to update the details\n");
@@ -138,10 +139,36 @@ while(1)
                      printf("Enter the values between 1 to 1000\n");
                      while(getchar()!='\n');
                   }
+	       search_student( p,roll_no,size,2);//search the data by using search function then in mode 2 it updates by insert funtion
+	       break;
+
+        case 6:printf("Enter the roll number u want to delete the details\n");
+               while(scanf("%hd",&roll_no) != 1 || (roll_no <=0 && roll_no>=1000))
+                  {
+                     printf("Invalid Input option\n");
+                     printf("Enter the values between 1 to 1000\n");
+                     while(getchar()!='\n');
+                  }
+               search_student( p,roll_no,size,3);//search the data by using search function then in mode 2 it updates by delete funtion
+		size=size-1;
+		//student *temp=NULL;
+                temp=realloc(p,sizeof(student)*size);
+                if(temp != NULL)
+                {
+                        p=temp;
+                }
+
+                else
+                {
+                        printf("Memory allocation failed\n");
+                        return 1;
+                }
 
 
-        case 6:break;
-        case 7:break;
+		break;
+
+        case 7:average_marks(p,size);
+	       break;
         case 8:printf("Thank You\n");
                exit(0);//Successful programme termination
         default:printf("Invalid input \n");//No need but extra safety purpose
@@ -175,17 +202,18 @@ void insert_data(student *s,int initial_value,int end_value,int mode)
 			    printf("Enter the Marks - %d\n",i+1);
 			    scanf("%d",&s[initial_value].marks[i]);
 		    }
+		    getchar();
         
 	        }
 	}
 
-	else
-	{
+	else if(mode ==2)
+	{ 
 		int insert_data;
 		printf("Enter the number u want to edit\n");
 		printf("1.Name\n2.Roll number\n3.marks\n");
 		scanf("%d",&insert_data);
-    
+    		getchar();
 	        if( insert_data == 1)
 		{
 		    printf("Enter the student name to update\n");
@@ -211,24 +239,37 @@ void insert_data(student *s,int initial_value,int end_value,int mode)
 				printf("Would u like change subject -%d marks\n",i+1);
 				printf("Y-yes or N-no\n");
 				scanf("%c",&choose);
+				getchar();
 				if(choose == 'Y')
 				{
 					printf("Update the marks of subject-%d\n",i+1);
 					printf("Enter the marks\n");
 					scanf("%d",&s->marks[i]);
+					getchar();
 				}
 			}
 
 		}
         }
+
+	else
+	{
+		printf("Invalid mode\n");
+	}
+
+	
 }
 
 
 
 void display_students(const student *s,int size)
 {
-	for(int i=0;i<size;i++)
+	printf("THE SIZE VALUE IS %d\n",size);
+	int i;
+	for(i=0;i<size;i++)
 	{
+	       
+
 		printf("The student-%d details are\n",i+1);
 		printf("Name    -%s\n",s[i].name);
 		printf("Roll_no -%d\n",s[i].roll_number);
@@ -246,19 +287,19 @@ void display_students(const student *s,int size)
 void search_student( student *s,int roll_no,int size,int mode)
 {
 	short int k=-1;
+	for(short int i=0 ;i<size ;i++)
+           {
+
+                   if(roll_no == s[i].roll_number)
+                   {
+                           k=i;
+                           break;
+                   }
+           }
  if(mode == 1)
   {
-	   for(short int i=0 ;i<size ;i++)
-	   {
-
-		   if(roll_no == s[i].roll_number)
-		   {
-			   k=i;
-			   break;
-		   }
-	   }
-
-	   if(k)
+	   
+	  if(k>=0)
 	   {
 	     printf("The student details are found\n");
 	     printf("The student details are\n");
@@ -277,19 +318,10 @@ void search_student( student *s,int roll_no,int size,int mode)
 	   }  
   }
 
- else
+ else if (mode == 2)
  {
-	  for(short int i=0 ;i<size ;i++)
-           {
 
-                   if(roll_no == s[i].roll_number)
-                   {
-                           k=i;
-                           break;
-                   }
-           }
-
-           if(k)
+           if(k>=0)
            {
              printf("The student details are found\n");
              printf("The student details are\n");
@@ -312,7 +344,37 @@ void search_student( student *s,int roll_no,int size,int mode)
 
  }
 
+ else if (mode == 3)
+ {
+	 if(k>=0)
+	 {
+		
+	for(;k<size-1;k++)
+	{
+	s[k]=s[k+1];
+	}
+	
+	 }
+	 
+
+	 else
+         {
+                   printf("Details are not found\n");
+         }
+
+ }
+
 
 }
 
+void average_marks(const student *s,int size)
+{
+	int i,average_marks;
+	for(i=0;i<size;i++)
+	{
+		printf("The student name -%s\n",s[i].name);
+		average_marks=(s[i].marks[0] + s[i].marks[1] + s[i].marks[2])/3;
+		printf("The average amrks are %d\n",average_marks);
+	}
+}
 
