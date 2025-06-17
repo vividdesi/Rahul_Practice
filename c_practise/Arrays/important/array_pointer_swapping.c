@@ -1,41 +1,40 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<stdlib.h>
 
-void sortPointers(int *arr[], int size) {
-    for (int i = 0; i < size - 1; i++) {
-        for (int j = 0; j < size - 1 - i; j++) {
-            if (*arr[j] > *arr[j + 1]) {
-                // Swap the pointers
-                int *temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
+void sort_array_pointer(int *a[],int n);
+void disp_array_pointer(int **a,int n);
 
-int main() {
-    int a = 10, b = 5, c = 30;
-    int *arr[] = { &a, &b, &c };
-
-    int size = sizeof(arr) / sizeof(arr[0]);
-
-    // Before sorting
-    printf("Before sorting:\n");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", *arr[i]);
-    }
-    printf("\n");
-
-    // Sort the array of pointers
-    sortPointers(arr, size);
-
-    // After sorting
-    printf("After sorting:\n");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", *arr[i]);
-    }
-    printf("\n");
-
+int main(void)
+{
+    int a=10,b=5,c=8;
+    int *arr[3]={&a,&b,&c};
+    printf("Before sorting pointers\n");
+    disp_array_pointer(arr,3);
+    printf("After sorting the pointers\n");
+    sort_array_pointer(arr,3);
+    disp_array_pointer(arr,3);
     return 0;
 }
 
+void sort_array_pointer(int *a[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n-1-i;j++)
+        {
+        if(*a[j] > *a[j+1])
+        {
+           int *tmp=a[j];
+            a[j]=a[j+1];
+            a[j+1]=tmp;
+        }
+        }
+    }
+}
+void disp_array_pointer(int **a,int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        printf("%d\n",*a[i]);
+    }
+}
