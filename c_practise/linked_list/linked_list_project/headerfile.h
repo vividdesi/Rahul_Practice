@@ -1,0 +1,20 @@
+#ifndef HEADERFILE_H
+#define HEADERFILE_H
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+    int data;
+    struct node *next;
+} node;
+
+void display_nodes(const node* t);
+void count_nodes(const node *t);
+void search_node(const node *t,int data);
+node *create_node(void);
+node *insert_node(node *start);
+
+#endif
+
