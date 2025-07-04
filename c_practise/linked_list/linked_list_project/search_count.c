@@ -2,7 +2,7 @@
 #include"headerfile.h"
 
 
-void count_nodes(const node *t)
+int  count_nodes(const node *t)
 {
 	int i,count=0;
 	if(t == NULL)
@@ -18,6 +18,7 @@ void count_nodes(const node *t)
 		}
 		printf("The count value is %d\n",count);
 	}
+	return count;
 }
 
 

@@ -11,7 +11,7 @@ typedef struct node
 } node;
 
 void display_nodes(const node* t);
-void count_nodes(const node *t);
+int  count_nodes(const node *t);
 void search_node(const node *t,int data);
 node *create_node(void);
 node *insert_node(node *start);

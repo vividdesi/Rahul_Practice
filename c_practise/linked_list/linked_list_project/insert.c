@@ -98,9 +98,15 @@ node *insert_pos(node *start,int pos)
 {
 
 	node *temp=NULL,*p=NULL;
-	int i=0;
+	int i=0,count;
 	temp=create_node();
 	p=start;
+	count=count_nodes(start);
+	if(pos < 0 || pos > count)
+	{
+		printf("Invalid position\n");
+		return start;
+	}
 	if (p == NULL)
 	{
 		start == temp;
