@@ -13,7 +13,7 @@ void display_nodes(const node * t)
 	{
 		while(t != NULL)
 		{
-			printf("%d ->",t->data);
+			printf("%d->",t->data);
 			t=t->next;
 		}
 		printf("NULL\n");
