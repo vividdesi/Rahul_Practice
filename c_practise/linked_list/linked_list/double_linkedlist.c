@@ -42,11 +42,26 @@ node *insert_end(node *start)
 
 void display(node *start)
 {
+    printf("NULL->");
     while(start != NULL)
     {
-        printf("<-%d->",start->data);
+        printf(" <-%d-> ",start->data);
         start=start->next;
     }
+    printf("NULL\n");
+}
+
+node *insert_beg(node *start)
+{
+	printf("Add data at the beginnig\n");
+	node *temp=create_node();
+	if( start != NULL)
+	{
+		temp->next=start;
+		start->prev=temp;
+	}
+	start=temp;
+	return start;
 }
 int main() {
  node *start=NULL;
@@ -55,5 +70,9 @@ int main() {
      start=insert_end(start);
  }
  display(start);
+
+ start=insert_beg(start);
+ display(start);
+
     return 0;
 }
