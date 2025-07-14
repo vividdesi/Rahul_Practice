@@ -13,6 +13,20 @@ void link_node(node *link);
 void display_nodes();
 void insert_node_pos(int alloc);
 void delete_node_pos(int alloc);
+node *reverse_sll(node *head)
+{
+	node *prev=NULL;
+	node *cur=head;
+	node *next=NULL;
+	while(cur != NULL)
+	{
+		next=cur->next;
+		cur->next=prev;
+		prev=cur;
+		cur=next;
+	}
+	return prev;
+}
 int main() {
   int nodes,data;
   node *temp=NULL;
@@ -27,6 +41,9 @@ int main() {
   }
     display_nodes();
     insert_node_pos(nodes);
+    display_nodes();
+    printf("Reversing the linked list\n");
+    head=reverse_sll(head);
     display_nodes();
     delete_node_pos(nodes);
     display_nodes();
