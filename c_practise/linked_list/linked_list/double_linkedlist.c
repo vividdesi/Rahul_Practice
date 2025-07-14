@@ -63,6 +63,22 @@ node *insert_beg(node *start)
 	start=temp;
 	return start;
 }
+
+node *rev_dll(node *start)
+{
+	node *temp=NULL;
+	node *cur=start;
+	while(cur != NULL)
+	{
+		temp=cur->prev;
+		cur->prev=cur->next;
+		cur->next=temp;
+		cur=cur->prev;
+	}
+	if(temp != NULL)start=temp->prev;
+	return start;
+}
+
 int main() {
  node *start=NULL;
  for(int i=0;i<4;i++)
@@ -73,6 +89,8 @@ int main() {
 
  start=insert_beg(start);
  display(start);
-
+ printf("Reversing the double linked list\n");
+ start=rev_dll(start);
+ display(start);
     return 0;
 }
