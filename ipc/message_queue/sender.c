@@ -11,10 +11,10 @@ int main() {
         return 1;
     }
 
-    struct msgbuf message;
+    struct msgbuf message,m1;
     message.mtype = 1;
-
-    printf("Enter message to send: ");
+	m1.mtype=2;
+    printf("Enter message1 to send: ");
     fgets(message.mtext, sizeof(message.mtext), stdin);
 
     // remove newline
@@ -26,6 +26,7 @@ int main() {
     }
 
     printf("Message sent.\n");
+
     return 0;
 }
 
