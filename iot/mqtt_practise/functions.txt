@@ -1,0 +1,13 @@
+void delivered(void *context, MQTTClient_deliveryToken dt)
+int msgarrvd(void *context, char *topicName, int topicLen, MQTTClient_message *message)
+void connlost(void *context, char *cause)
+
+
+MQTTClient_create(&client, uri, CLIENTID, MQTTCLIENT_PERSISTENCE_NONE, NULL))
+
+ MQTTClient_setCallbacks(client, NULL, connlost, msgarrvd, delivered)
+MQTTClient_connect(client, &conn_opts)
+ MQTTClient_subscribe(client, TOPIC, QOS)
+ MQTTClient_unsubscribe(client, TOPIC)
+ MQTTClient_disconnect(client, 10000)
+ MQTTClient_destroy(&client);
