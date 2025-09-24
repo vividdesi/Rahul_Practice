@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/yoctotutor.dir/src/hello.c.o -o yoctotutor

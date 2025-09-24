@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/app.dir/src/add.c.o CMakeFiles/app.dir/src/sub.c.o CMakeFiles/app.dir/src/multi.c.o CMakeFiles/app.dir/test/app.c.o -o app
