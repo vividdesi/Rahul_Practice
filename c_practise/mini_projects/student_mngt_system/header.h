@@ -19,4 +19,22 @@ void display_students(student * start);
 
 void calculate_grade(student *start);
 
+student* insert_begin(student * start);
+
+student* insert_end(student *start);
+
+student* insert_at_position(student *start);
+
+student* delete_begin(student *start);
+
+student* delete_end(student *start);
+
+student* delete_at_position(student *start);
+
+void free_all_nodes(student *start);
+
+extern student* (*del_fun[3])(student*);
+
+extern student* (*insert_fun[3])(student*);
+
 //void search_rollno();

@@ -6,6 +6,7 @@
 #include "header.h"
 
 int roll_no=0;
+int length=0;
 
 char *gender[3]={"Male","Female","Others"};
 
@@ -50,8 +51,12 @@ student* create_node()
 			//while(getchar() != '\n' && getchar() != EOF);
 		}
 			while(getchar() != '\n' && getchar() != EOF);
-
+		
 		temp->next=NULL;
+
+		length++;
+		//added length so that i can how many nodes are there...!
+
 		return temp;
 
 	}
