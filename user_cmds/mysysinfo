@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Welcome $USER!"
+echo "Today Date is $(date)"
+echo "Your Current working Directory is $(pwd)"
