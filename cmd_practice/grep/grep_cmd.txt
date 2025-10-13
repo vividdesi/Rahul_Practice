@@ -1,0 +1,17 @@
+grep "Hello" file1.txt
+
+grep -i "hello" file1.txt
+
+
+grep "hello" *.txt
+file4.txt:hello again
+grep_cmd.txt:grep -i "hello" file1.txt
+
+grep "o" *.txt
+file1.txt:Hello world
+file2.txt:I love embedded Linux
+file3.txt:Yocto is awesome
+file4.txt:hello again
+grep_cmd.txt:grep "Hello" file1.txt
+grep_cmd.txt:grep -i "hello" file1.txt
+
