@@ -15,3 +15,25 @@ file4.txt:hello again
 grep_cmd.txt:grep "Hello" file1.txt
 grep_cmd.txt:grep -i "hello" file1.txt
 
+grep -n "hello" *.txt
+
+showing line number
+
+
+rahul@HP-247:~$ grep -r -l --include="*.c" "main" ~/yoctotutor/source
+/home/rahul/yoctotutor/source/poky/meta-skeleton/recipes-skeleton/service/service/skeleton_test.c
+/home/rahul/yoctotutor/source/poky/meta-skeleton/recipes-skeleton/hello-single/files/helloworld.c
+/home/rahul/yoctotutor/source/poky/meta-rahul/recipes-hello/hello-make/files/hello_make.c
+/home/rahul/yoctotutor/source/poky/meta-rahul/recipes-hello/hello-c/files/hello.c
+/home/rahul/yoctotutor/source/poky/meta-selftest/recipes-test/selftest-hardlink/selftest-hardlink/hello.c
+/home/rahul/yoctotutor/source/poky/meta/recipes-devtools/qemu/qemu-helper/qemu-oe-bridge-helper.c
+/home/rahul/yoctotutor/source/poky/meta/recipes-devtools/qemu/qemu-helper/tunctl.c
+/home/rahul/yoctotutor/source/poky/meta/recipes-devtools/makedevs/makedevs/makedevs.c
+/home/rahul/yoctotutor/source/poky/meta/recipes-devtools/dwarfsrcfiles/files/dwarfsrcfiles.c
+/home/rahul/yoctotutor/source/poky/meta/recipes-graphics/pong-clock/pong-clock/pong-clock-no-flicker.c
+/home/rahul/yoctotutor/source/poky/meta/lib/oeqa/runtime/files/hello.c
+/home/rahul/yoctotutor/source/poky/meta/lib/oeqa/sdkext/files/myapp/myapp.c
+/home/rahul/yoctotutor/source/poky/meta/lib/oeqa/sdkext/files/myapp_cmake/myapp.c
+/home/rahul/yoctotutor/source/poky/meta/lib/oeqa/files/test.c
+/home/rahul/yoctotutor/source/poky/meta/recipes-extended/at/at/posixtm.c
+
